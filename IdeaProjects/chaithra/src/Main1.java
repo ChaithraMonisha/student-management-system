@@ -48,7 +48,7 @@ public class Main1 {
         }
             int choice;
             do {
-                System.out.println("===================STUDENT MANAGEMENT SYSTEM=============================");
+                System.out.println("============STUDENT MANAGEMENT SYSTEM=================");
                 System.out.println("1.ADD STUDENT");
                 System.out.println("2.VIEW ALL STUDENTS");
                 System.out.println("3.UPDATE");
