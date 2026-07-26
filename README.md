@@ -31,7 +31,7 @@ A console-based Java application to manage student records, built using Core Jav
 ```
 student-management-system/
 ├── src/
-│   ├── Main.java              # Entry point, menu-driven console UI
+│   ├── Main1.java              # Entry point, menu-driven console UI
 │   ├── DBConnection.java      # Handles JDBC connection setup
 │   ├── auth/
 │   │   ├── Signup.java        # User registration logic
