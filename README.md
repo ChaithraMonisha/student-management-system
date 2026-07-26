@@ -94,13 +94,13 @@ CREATE TABLE students (
 ## Screenshots
 
 ### Login Screen
-![Login](Login.png)
+![Login](ScreenShots\Login.png)
 
 ### Student List
-![Student List](StudentList.png)
+![Student List](ScreenShots\StudentList.png)"
 
 ### Reports
-![Reports](Report.png)
+![Reports](ScreenShots\Report.png)
 
 ---
 
