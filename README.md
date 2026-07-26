@@ -100,7 +100,7 @@ CREATE TABLE students (
 ![Student List](StudentList.png)
 
 ### Reports
-![Reports](Reports.png)
+![Reports](Report.png)
 
 ---
 
