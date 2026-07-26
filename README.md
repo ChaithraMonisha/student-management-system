@@ -107,5 +107,5 @@ CREATE TABLE students (
 ## Author
 
 - **Name**   : Chaithra K M
-- **College** : [Your college name]
-- **Degree**  : BCA Final Year, Tumkur University
+- **College** : Varadaraja Degree College,Tumkur
+- **Degree**  : BCA Final Year
