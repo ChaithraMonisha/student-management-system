@@ -12,7 +12,7 @@ public class StudentDAO {
             ptmt.setString(3, dept);
             ptmt.setInt(4, marks);
             ptmt.executeUpdate();
-            System.out.println("student added successfully");
+            System.out.println("Student added Successfully");
         } catch (SQLException e) {
             System.out.println("error" + e.getMessage());
         }
@@ -53,11 +53,11 @@ public class StudentDAO {
             int rows = ptmt.executeUpdate();
             if (rows > 0)
             {
-                System.out.println("Marks updated successfully");
+                System.out.println("Marks Updated Successfully");
             }
             else
             {
-                System.out.println("no student found with that roll number");
+                System.out.println("No Student found with that RollNo");
             }
         }
             catch(SQLException e)
@@ -76,11 +76,11 @@ public class StudentDAO {
             int rows = ptmt.executeUpdate();
         if (rows > 0)
         {
-            System.out.println("Student record deleted successfully");
+            System.out.println("Student Record Deleted Successfully");
         }
         else
         {
-            System.out.println("roll number not found");
+            System.out.println("RollNo Not Found");
         }
        }
     catch(SQLException e)
@@ -88,4 +88,73 @@ public class StudentDAO {
             System.out.println("Error"+e.getMessage());
         }
     }
+public void searchStudents(String rollNo) {
+    String sql = "SELECT * FROM students WHERE roll_no=?";
+    try (Connection conn = DBConnection.getConnection();
+            PreparedStatement ptmt = conn.prepareStatement(sql))
+    {
+        ptmt.setString(1, rollNo);
+        ResultSet rs = ptmt.executeQuery();
+        if (rs.next())
+        {
+            System.out.println("------Student found------");
+            System.out.println("ID : " + rs.getInt("ID"));
+            System.out.println("Name : " + rs.getString("Name"));
+            System.out.println("RollNo : "  + rs.getString("Roll_no"));
+            System.out.println("Department : " + rs.getString("Department"));
+            System.out.println("Marks : " + rs.getInt("Marks"));
+        }
+        else
+        {
+            System.out.println("Student not found");
+        }
+   }
+    catch(SQLException e)
+    {
+        System.out.println("error"+e.getMessage());
+    }
+}
+//Repot Average marks of students
+public void averageMarks()
+{
+    String sql="SELECT AVG(marks) AS average_marks FROM students";
+    try(Connection conn=DBConnection.getConnection();
+        Statement stmt=conn.createStatement();
+        ResultSet rs=stmt.executeQuery(sql))
+    {
+        if(rs.next())
+        {
+            double avg=rs.getDouble("average_marks");
+            System.out.println("Average Marks of all students :"+avg);
+        }
+    }
+    catch(SQLException e)
+    {
+        System.out.println("Error"+e.getMessage());
+    }
+}
+//REPORT-HIGHEST SCORING STUDENT
+    public void highestScore()
+    {
+        String sql="SELECT * FROM students WHERE marks=(SELECT MAX(marks) FROM students)";
+        try(Connection conn=DBConnection.getConnection();
+        Statement stmt=conn.createStatement();
+        ResultSet rs=stmt.executeQuery(sql))
+        {
+            while(rs.next())
+            {
+                System.out.println("=====================Highest marks of student=========================================");
+                System.out.println("ID : "+rs.getInt("ID"));
+                System.out.println("Name : "+rs.getString("name"));
+                System.out.println("RollNo : "+rs.getString("Roll_No"));
+                System.out.println("Department : "+rs.getString("Department"));
+                System.out.println("Marks : "+rs.getInt("Marks"));
+            }
+        }
+    catch(SQLException e)
+    {
+        System.out.println("Error"+e.getMessage());
+    }
+
+}
 }
